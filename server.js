@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
 const port = 3000; // Change this to the desired port
@@ -29,7 +30,8 @@ app.post('/submit-form', (req, res) => {
       res.status(500).json({ message: 'Form submission failed' });
     });
 });
-
+// Enable CORS for all routes
+app.use(cors());
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
